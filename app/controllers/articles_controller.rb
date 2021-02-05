@@ -6,10 +6,18 @@ class ArticlesController < ApplicationController
     
     def new
         @article = Article.new
-        @article.title = 'Demo'
     end
     def create
         @article = Article.create(title: params[:article][:title], content: params[:article][:content])
         render json: @article
     end
+    def edit
+        @article = Article.find(params[:id])
+    end
+    def update
+        @article = Article.find(params[:id])
+        @article = Article.update(title: params[:article][:title], content: params[:article][:content])
+        redirect_to @article[0]
+    end
+
 end
