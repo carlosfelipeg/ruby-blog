@@ -14,10 +14,12 @@
     <% if notice %>
     <p class="notice alert-primary"><%= notice %></p>
     <%end%>
-    <p class="alert alert-danger"><%= alert %></p>
     <% if alert %>
-    <%= render "partials/nav" %>
+    <p class="alert alert-danger"><%= alert %></p>
     <%end%>
+    
+    <%= render "partials/nav" %>
+    
     <%= yield %>
   </body>
 </html>
