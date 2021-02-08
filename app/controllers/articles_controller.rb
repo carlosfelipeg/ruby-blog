@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
 
-    before_action :find_article, except: [:new,:create,:index]
+    before_action :find_article, except: [:new,:create,:index, :from_author]
     before_action :authenticate_user!, only: [:new,:create,:edit,:destroy]
 
     def index
@@ -26,9 +26,12 @@ class ArticlesController < ApplicationController
     end
     
     def update
-        
         @article = Article.update(title: params[:article][:title], content: params[:article][:content])
         redirect_to @article[0]
+    end
+
+    def from_author
+        @user = User.find(params[:user_id])
     end
     
     def destroy
