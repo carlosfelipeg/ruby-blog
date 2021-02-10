@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     
     def update
         @article = Article.update(article_params)
-        @article.save_categories
+        @article[0].save_categories
         redirect_to @article[0]
     end
 
