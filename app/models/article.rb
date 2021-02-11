@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
     has_rich_text :content
     belongs_to :user # campo adicional
-    has_many :has_categories
-    has_many :categories, through: :has_categories
+    has_many :has_categories, dependent: :delete_all
+    has_many :categories, through: :has_categories, dependent: :delete_all
     attr_accessor :category_elements
 
     def save_categories
